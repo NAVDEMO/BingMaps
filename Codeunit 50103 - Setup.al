@@ -61,24 +61,6 @@ codeunit 50103 "freddyk BingMaps Setup"
         exit(false);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::ApplicationManagement, 'OnRoleCenterOpen', '', true, true)]
-    local procedure CheckSubscriptionStatus_OnOpenRoleCenter()
-    var
-        Notification: Notification;
-        BingMapsSetup: Codeunit "freddyk BingMaps Setup";
-        BingMapsSettings: Record "freddyk BingMaps Settings";
-    begin
-        if not BingMapsSetup.GetSettings(BingMapsSettings) then begin
-            if not BingMapsSettings.WritePermission() then
-                exit;
-            Notification.ID('3EBC1525-C2D4-4797-8B28-BA2D0C6294B5');
-            Notification.SCOPE(NOTIFICATIONSCOPE::LocalScope);
-            Notification.MESSAGE('BingMaps Integration is missing some settings in order to work properly');
-            Notification.ADDACTION('Setup BingMaps Integration', CODEUNIT::"freddyk BingMaps Setup", 'SetupBingMapsIntegration');
-            Notification.Send();
-        end;
-    end;
-
     procedure SetupBingMapsIntegration(notification: Notification);
     var
         BingMapsSetup: Page "freddyk BingMaps Setup";
