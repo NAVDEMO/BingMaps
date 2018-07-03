@@ -6,7 +6,7 @@ codeunit 50102 "freddyk BingMaps Show All"
         BingMapsSettings: Record "freddyk BingMaps Settings";
         wsUserOk: Boolean;
     begin
-        if (BingMapsSetup.GetSettings2(BingMapsSettings, wsUserOk) and wsUserOk) then
+        if (BingMapsSetup.GetSettings(BingMapsSettings, wsUserOk) and wsUserOk) then
             hyperlink('https://bingmapsintegration.azurewebsites.net/Default.aspx?username=' + BingMapsSettings."Web Services Username" + '&publicodatabaseurl=' + GETURL(ClientType::OData) + '&bingmapskey=' + Escape(BingMapsSettings."BingMaps Key") + '&wskey=' + Escape(BingMapsSettings."Web Services Key"));
     end;
 

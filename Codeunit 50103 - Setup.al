@@ -54,7 +54,7 @@ codeunit 50103 "freddyk BingMaps Setup"
         tempCustomer.Address := 'One Microsoft Way';
         tempCustomer."Country/Region Code" := 'US';
         tempCustomer.City := 'Redmond';
-        if tempCustomer.GeocodeCustomer1(ErrorText) then begin
+        if tempCustomer.GeocodeCustomer(ErrorText) then begin
             BingMapsSettings."BingMaps Key OK" := true;
             Exit(true);
         end;
@@ -97,7 +97,7 @@ codeunit 50103 "freddyk BingMaps Setup"
         exit(BingMapsSettings."BingMaps Key OK");
     end;
 
-    procedure GetSettings2(var BingMapsSettings: Record "freddyk BingMaps Settings"; var WsUserSet: Boolean): Boolean
+    procedure GetSettings(var BingMapsSettings: Record "freddyk BingMaps Settings"; var WsUserSet: Boolean): Boolean
     begin
         if (not GetSettings(BingMapsSettings)) then
             exit(false);
