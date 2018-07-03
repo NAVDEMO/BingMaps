@@ -40,6 +40,6 @@ pageextension 50103 "freddyk BingMaps Cust List" extends "Customer List"
         BingMapsSetup: Codeunit "freddyk BingMaps Setup";
         BingMapsSettings: Record "freddyk BingMaps Settings";
     begin
-        ShowFactBox := BingMapsSetup.GetSettings(BingMapsSettings, EnableShowAll);
+        ShowFactBox := BingMapsSetup.GetSettings2(BingMapsSettings, EnableShowAll);
     end;
 }

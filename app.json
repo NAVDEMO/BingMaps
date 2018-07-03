@@ -1,7 +1,7 @@
 {
   "id": "a3c186ed-d7fd-4e0b-a0dc-1b4edb572fb7",
   "name": "BingMaps",
-  "publisher": "Freddy Kristiansen",
+  "publisher": "freddyk",
   "brief": "",
   "description": "",
   "version": "1.0.0.0",
@@ -10,11 +10,12 @@
   "help": "",
   "url": "",
   "logo": "",
+  "target": "Extension",
   "capabilities": [],
   "dependencies": [],
   "screenshots": [],
-  "platform": "12.0.0.0",
-  "application": "12.0.0.0",
+  "platform": "11.0.0.0",
+  "application": "11.0.0.0",
   "idRange": {
     "from": 50100,
     "to": 50149

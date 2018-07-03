@@ -12,11 +12,11 @@ codeunit 50103 "freddyk BingMaps Setup"
             Error('Argument error');
         GetSettings(BingMapsSettings);
         if Settings.Get('BingMapsKey', Token) then
-            BingMapsSettings."BingMaps Key" := Token.AsValue().AsText().Substring(0,80);
+            BingMapsSettings."BingMaps Key" := CopyStr(Token.AsValue().AsText(), 1, MaxStrLen(BingMapsSettings."BingMaps Key"));
         if Settings.Get('WebServicesUsername', Token) then
-            BingMapsSettings."Web Services Username" := Token.AsValue().AsText().Substring(0,40);
+            BingMapsSettings."Web Services Username" := CopyStr(Token.AsValue().AsText(), 1, MaxStrLen(BingMapsSettings."Web Services Username"));
         if Settings.Get('WebServicesKey', Token) then
-            BingMapsSettings."Web Services Key" := Token.AsValue().AsText().Substring(0,80);
+            BingMapsSettings."Web Services Key" := CopyStr(Token.AsValue().AsText(), 1, MaxStrLen(BingMapsSettings."Web Services Key"));
         BingMapsSettings.Modify();
         if TestSettings(BingMapsSettings, ErrorText) then begin
             BingMapsSettings.Modify();
@@ -54,7 +54,7 @@ codeunit 50103 "freddyk BingMaps Setup"
         tempCustomer.Address := 'One Microsoft Way';
         tempCustomer."Country/Region Code" := 'US';
         tempCustomer.City := 'Redmond';
-        if tempCustomer.GeocodeCustomer(ErrorText) then begin
+        if tempCustomer.GeocodeCustomer1(ErrorText) then begin
             BingMapsSettings."BingMaps Key OK" := true;
             Exit(true);
         end;
@@ -86,14 +86,6 @@ codeunit 50103 "freddyk BingMaps Setup"
         BingMapsSetup.RunModal();
     end;
 
-    procedure GetSettings(var BingMapsSettings: Record "freddyk BingMaps Settings"; var WsUserSet: Boolean): Boolean
-    begin
-        if (not GetSettings(BingMapsSettings)) then
-            exit(false);
-        WsUserSet := (BingMapsSettings."Web Services Username" <> '') and (BingMapsSettings."Web Services Key" <> '');
-        exit(true);
-    end;
-
     procedure GetSettings(var BingMapsSettings: Record "freddyk BingMaps Settings"): Boolean
     begin
         if not BingMapsSettings.FindFirst() then begin
@@ -104,4 +96,13 @@ codeunit 50103 "freddyk BingMaps Setup"
         end;
         exit(BingMapsSettings."BingMaps Key OK");
     end;
+
+    procedure GetSettings2(var BingMapsSettings: Record "freddyk BingMaps Settings"; var WsUserSet: Boolean): Boolean
+    begin
+        if (not GetSettings(BingMapsSettings)) then
+            exit(false);
+        WsUserSet := (BingMapsSettings."Web Services Username" <> '') and (BingMapsSettings."Web Services Key" <> '');
+        exit(true);
+    end;
+
 }

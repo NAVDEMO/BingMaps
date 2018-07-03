@@ -51,10 +51,10 @@ tableextension 50100 "freddyk BingMaps Cust Table" extends Customer
     var
         ErrorText: Text;
     begin
-        GeocodeCustomer(ErrorText);
+        GeocodeCustomer1(ErrorText);
     end;
 
-    procedure GeocodeCustomer(var ErrorText: Text): Boolean
+    procedure GeocodeCustomer1(var ErrorText: Text): Boolean
     var
         Country: Record "Country/Region";
         Geocode: Codeunit "freddyk BingMaps Geocode";

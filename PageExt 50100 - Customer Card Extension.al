@@ -58,6 +58,6 @@ pageextension 50100 "freddyk BingMaps Cust Card" extends "Customer Card"
         BingMapsSetup: Codeunit "freddyk BingMaps Setup";
         BingMapsSettings: Record "freddyk BingMaps Settings";
     begin
-        ShowFactBox := BingMapsSetup.GetSettings(BingMapsSettings, EnableShowAll);
+        ShowFactBox := BingMapsSetup.GetSettings2(BingMapsSettings, EnableShowAll);
     end;
 }
