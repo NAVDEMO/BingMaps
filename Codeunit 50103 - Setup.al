@@ -71,10 +71,10 @@ codeunit 50103 "freddyk BingMaps Setup"
         if not BingMapsSetup.GetSettings(BingMapsSettings) then begin
             if not BingMapsSettings.WritePermission() then
                 exit;
-            Notification.ID('3EBC1525-C2D4-4797-8B28-BA2D0C6294B5');
-            Notification.SCOPE(NOTIFICATIONSCOPE::LocalScope);
-            Notification.MESSAGE('BingMaps Integration is missing some settings in order to work properly');
-            Notification.ADDACTION('Setup BingMaps Integration', CODEUNIT::"freddyk BingMaps Setup", 'SetupBingMapsIntegration');
+            Notification.Id('3EBC1525-C2D4-4797-8B28-BA2D0C6294B5');
+            Notification.Scope(NotificationScope::LocalScope);
+            Notification.Message('BingMaps Integration is missing some settings in order to work properly');
+            Notification.AddAction('Setup BingMaps Integration', CODEUNIT::"freddyk BingMaps Setup", 'SetupBingMapsIntegration');
             Notification.Send();
         end;
     end;
