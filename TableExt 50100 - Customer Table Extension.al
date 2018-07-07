@@ -58,28 +58,31 @@ tableextension 50100 "freddyk BingMaps Cust Table" extends Customer
     var
         Country: Record "Country/Region";
         Geocode: Codeunit "freddyk BingMaps Geocode";
+        CountryName: Text;
     begin
         Geocoded := 0;
-        if Country.GET("Country/Region Code") then
-            if Geocode.Geocode(Address + ' ' + "Address 2" + ' ' + City + ' ' + Country.Name, Latitude, Longitude, ErrorText) then begin
-                // Full address geocoded
-                Zoom := 15;
+        CountryName := "Country/Region Code";
+        if Country.GET(CountryName) then
+            CountryName := Country.Name;
+        if Geocode.Geocode(Address + ' ' + "Address 2" + ' ' + City + ' ' + CountryName, Latitude, Longitude, ErrorText) then begin
+            // Full address geocoded
+            Zoom := 15;
+            Geocoded := 1;
+            exit(true);
+        end else
+            if Geocode.Geocode(City + ' ' + CountryName, Latitude, Longitude, ErrorText) then begin
+                // City and country geocoded
+                Zoom := 9;
                 Geocoded := 1;
                 exit(true);
-            end else
-                if Geocode.Geocode(City + ' ' + Country.Name, Latitude, Longitude, ErrorText) then begin
-                    // City and country geocoded
-                    Zoom := 9;
-                    Geocoded := 1;
-                    exit(true);
-                end else begin
-                    // Geocoding not possible
-                    Latitude := 0;
-                    Longitude := 0;
-                    Zoom := 0;
-                    Geocoded := -1;
-                    exit(false);
-                end;
+            end else begin
+                // Geocoding not possible
+                Latitude := 0;
+                Longitude := 0;
+                Zoom := 0;
+                Geocoded := -1;
+                exit(false);
+            end;
         exit(false);
     end;
 }
