@@ -61,7 +61,7 @@ codeunit 50103 "freddyk BingMaps Setup"
         exit(false);
     end;
 
-    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Conf./Personalization Mgt.", 'OnRoleCenterOpen', '', true, true)]
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"ApplicationManagement", 'OnRoleCenterOpen', '', true, true)]
     local procedure CheckSubscriptionStatus_OnOpenRoleCenter()
     var
         Notification: Notification;
