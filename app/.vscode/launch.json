@@ -5,8 +5,9 @@
             "type": "al",
             "request": "launch",
             "name": "Your own server",
-            "server": "http://test",
-            "serverInstance": "nav",
+            "server": "https://fkdevbox.westeurope.cloudapp.azure.com",
+            "serverInstance": "NAV",
+            "tenant": "",
             "authentication": "UserPassword",
             "startupObjectId": 22,
             "startupObjectType": "Page"
