@@ -34,7 +34,7 @@ page 50101 "freddyk BingMaps CustomerMap"
         zoomStr: Text;
         embedUrl: Text;
         largeMapUrl: Text;
-        directionsUrl: Text;
+        directionsUrl: Texts;
     begin
         latitudeStr := FORMAT(Latitude, 0, 9);
         longitudeStr := FORMAT(longitude, 0, 9);
