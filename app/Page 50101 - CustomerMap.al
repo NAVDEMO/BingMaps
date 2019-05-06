@@ -2,7 +2,7 @@ page 50101 "freddyk BingMaps CustomerMap"
 {
     PageType = CardPart;
     SourceTable = Customer;
-    Caption = 'Customer Mapxx';
+    Caption = 'Customer Map';
 
     layout
     {
